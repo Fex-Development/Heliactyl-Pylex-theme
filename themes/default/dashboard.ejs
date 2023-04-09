@@ -1,6 +1,6 @@
-<html class="h-full bg-pylex-800">
+<html class="h-full bg-fex-800">
 <%- include('./components/head') %>
-<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-pylex-800 h-full">
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-fex-800 h-full">
 <div>
 <%- include('./components/sidebar') %>
 
@@ -43,9 +43,9 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
 
 <br>
                   
-  <dl class="card-body mt-8 grid grid-cols-1 rounded-lg bg-pylex-700 border border-pylex2-600 mb-8 overflow-hidden shadow divide-y divide-pylex-600 md:grid-cols-3 md:divide-y-0 md:divide-x">
+  <dl class="card-body mt-8 grid grid-cols-1 rounded-lg bg-fex-700 border border-fex2-600 mb-8 overflow-hidden shadow divide-y divide-fex-600 md:grid-cols-3 md:divide-y-0 md:divide-x">
     <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400">RAM (MB)</dt>
+      <dt class="text-base font-normal text-fex-400">RAM (MB)</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
         <div class="flex items-baseline text-2xl font-semibold text-sky-400">
           <%= ram %>MB / <%= (packages ? packages.ram : 0) + extraresources.ram%>MB
@@ -53,7 +53,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
     </div>
 
     <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400">CPU Threads (%)</dt>
+      <dt class="text-base font-normal text-fex-400">CPU Threads (%)</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
         <div class="flex items-baseline text-2xl font-semibold text-sky-400">
           <%= cpu %>% / <%= (packages ? packages.cpu : 0) + extraresources.cpu%>%
@@ -62,7 +62,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
     </div>
 
     <div class="px-4 py-3 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400">Disk (MB)</dt>
+      <dt class="text-base font-normal text-fex-400">Disk (MB)</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
         <div class="flex items-baseline text-2xl font-semibold text-sky-400">
           <%= disk %>MB / <%= (packages ? packages.disk : 0) + extraresources.disk%>MB
@@ -71,10 +71,10 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
     </div>
   </dl>
 
-      <div class="border-t border-l border-r border-pylex2-600 transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow sm:rounded-tr-lg sm:rounded-tl-lg">
+      <div class="border-t border-l border-r border-fex2-600 transition ease-in-out delay-100 overflow-hidden bg-fex-700 shadow sm:rounded-tr-lg sm:rounded-tl-lg">
         <br>
 </div>
-      <div class="border-b border-l border-r border-pylex2-600 transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow rounded-bl-lg rounded-br-lg">
+      <div class="border-b border-l border-r border-fex2-600 transition ease-in-out delay-100 overflow-hidden bg-fex-700 shadow rounded-bl-lg rounded-br-lg">
         <br>
       </div>
       <!-- /End replace -->
