@@ -1,6 +1,6 @@
-<html class="h-full bg-pylex-800">
+<html class="h-full bg-fex-800">
 <%- include('./components/head') %>
-<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-pylex-800 h-full">
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-fex-800 h-full">
 <div>
  <%- include('./components/sidebar') %>
 
@@ -37,13 +37,13 @@
 <div>
 
 <!-- This example requires Tailwind CSS v2.0+ -->
-<dl class="mt-5 grid grid-cols-1 rounded-lg bg-pylex-700 mb-8 overflow-hidden shadow divide-y divide-pylex-600 md:grid-cols-3 md:divide-y-0 md:divide-x">
+<dl class="mt-5 grid grid-cols-1 rounded-lg bg-fex-700 mb-8 overflow-hidden shadow divide-y divide-fex-600 md:grid-cols-3 md:divide-y-0 md:divide-x">
     <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400"><%= settings.api.client.coins.store.ram.per %>MB Ram per <%= settings.api.client.coins.store.ram.cost %> coins.</dt>
+      <dt class="text-base font-normal text-fex-400"><%= settings.api.client.coins.store.ram.per %>MB Ram per <%= settings.api.client.coins.store.ram.cost %> coins.</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                 <div class="mt-1 flex rounded-md shadow-sm">
        <form action="/buyram">
-<select name="amount" class=" form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-pylex-600 border-pylex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
+<select name="amount" class=" form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
                           <option value=1 selected="selected"><%= settings.api.client.coins.store.ram.per %>MB RAM per <%= settings.api.client.coins.store.ram.cost %> coins</option>
                           <option value=2><%= settings.api.client.coins.store.ram.per * 2 %>MB RAM per <%= settings.api.client.coins.store.ram.cost * 2 %> coins</option>
                           <option value=3><%= settings.api.client.coins.store.ram.per * 3 %>MB RAM per <%= settings.api.client.coins.store.ram.cost * 3 %> coins</option>
@@ -59,12 +59,12 @@
       </dd>
     </div>
                               <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400"><%= settings.api.client.coins.store.disk.per %>MB Disk per <%= settings.api.client.coins.store.disk.cost %> coins</dt>
+      <dt class="text-base font-normal text-fex-400"><%= settings.api.client.coins.store.disk.per %>MB Disk per <%= settings.api.client.coins.store.disk.cost %> coins</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                 <div class="mt-1 flex rounded-md shadow-sm">
                  <form action="/buydisk">
-                  <select name="amount" class="form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-pylex-600
-                   border-pylex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
+                  <select name="amount" class="form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600
+                   border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
                           <option value=1 selected="selected"><%= settings.api.client.coins.store.disk.per %>MB Disk - <%= settings.api.client.coins.store.disk.cost %> coins</option>
                           <option value=2><%= settings.api.client.coins.store.disk.per * 2 %>MB Disk - <%= settings.api.client.coins.store.disk.cost * 2 %> coins</option>
                           <option value=3><%= settings.api.client.coins.store.disk.per * 3 %>MB Disk - <%= settings.api.client.coins.store.disk.cost * 3 %> coins</option>
@@ -81,11 +81,11 @@
       </dd>
 </div>
 <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400">1<%= settings.api.client.coins.store.cpu.per %>% CPU per <%= settings.api.client.coins.store.cpu.cost %> coins</dt>
+      <dt class="text-base font-normal text-fex-400">1<%= settings.api.client.coins.store.cpu.per %>% CPU per <%= settings.api.client.coins.store.cpu.cost %> coins</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                 <div class="mt-1 flex rounded-md shadow-sm">
 <form action="/buycpu">
-                                    <select name="amount" class="form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-pylex-600 border-pylex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
+                                    <select name="amount" class="form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
                           <option value=1 selected="selected"><%= settings.api.client.coins.store.cpu.per %>% CPU - <%= settings.api.client.coins.store.cpu.cost %> coins</option>
                           <option value=2><%= settings.api.client.coins.store.cpu.per * 2 %>% CPU - <%= settings.api.client.coins.store.cpu.cost * 2 %> coins</option>
                         </select>
@@ -100,11 +100,11 @@
     </div>
 
 <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400"><%= settings.api.client.coins.store.servers.per %> Server per <%= settings.api.client.coins.store.servers.cost %> coins</dt>
+      <dt class="text-base font-normal text-fex-400"><%= settings.api.client.coins.store.servers.per %> Server per <%= settings.api.client.coins.store.servers.cost %> coins</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
                 <div class="mt-1 flex rounded-md shadow-sm">
 <form action="/buyservers">
-                                    <select name="amount" class="form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-pylex-600 border-pylex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
+                                    <select name="amount" class="form-control transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm">
                           <option value=1 selected="selected"><%= settings.api.client.coins.store.servers.per %> Server - <%= settings.api.client.coins.store.servers.cost %> coins</option>
                           <option value=2><%= settings.api.client.coins.store.servers.per * 2 %> Servers - <%= settings.api.client.coins.store.servers.cost * 2 %> coins</option>
                           <option value=3><%= settings.api.client.coins.store.servers.per * 3 %> Servers - <%= settings.api.client.coins.store.servers.cost * 3 %> coins</option>
@@ -118,14 +118,6 @@
       </form>
                 </div>
       </dd>
-          <script>
-      async function submitChanges() {
-        let ram = encodeURIComponent(document.getElementById("InputRAM").value);
-        let disk = encodeURIComponent(document.getElementById("InputDisk").value);
-        let cpu = encodeURIComponent(document.getElementById("InputCPU").value);
-        document.location.href = `/modify?id=<%= req.query.id %>&ram=${ram}&disk=${disk}&cpu=${cpu}`;
-      };
-    </script>
     </div>
   </dl>
       <!-- /End replace -->
