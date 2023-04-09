@@ -1,0 +1,75 @@
+<html class="h-full bg-fex-800">
+<%- include('./components/head') %>
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-fex-800 h-full">
+<div>
+<%- include('./components/sidebar') %>
+    
+      <main>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+          <!-- Replace with your content -->
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    <!-- This example requires Tailwind CSS v2.0+ -->
+    
+    
+    
+    
+    <div>
+    
+    
+            
+                <% if (req.query.err) { %>
+              <div style="border-radius: 15px;" class="alert">
+                <% if (req.query.err == "MISSINGFIELDS") { %>
+                    You must fill out all fields in the form.
+                <% } else if (req.query.err == "CANNOTGIFTYOURSELF") { %>
+                    You cannot gift coins to yourself -_-
+                <% } else if (req.query.err == "CANTAFFORD") { %>
+                    You do not have enough coins to gift this amount.
+                <% } else if (req.query.err == "USERDOESNTEXIST") { %>
+                    No user with the ID you tried to send coins to has logged in to the dashboard.
+                <% } else if (req.query.err == "TOOLOWCOINS") { %>
+                    You must gift 1 or more coin.
+                <% } %>
+              </div>
+            <% } else if (req.query.success) { %>
+              <div class="alert" style="background-color: #007fcc; border-radius: 15px">
+                Success! The coins have been transferred
+              </div>
+            <% } %>
+      <dl class="mt-5 grid grid-cols-1 rounded-lg bg-fex-700 mb-8 overflow-hidden shadow divide-y divide-fex-600 md:grid-cols-2 md:divide-y-0 md:divide-x">
+        <div class="px-4 py-5 sm:p-6">
+          <dt class="text-base font-normal text-white">Transfer Credits</dt><br>
+          <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+            <label for="InputID">Discord Id:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" id="InputID" type="number"><br><br>
+            <label for="InputCoins">Amount of credits:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" id="InputCredits" type="number"><br><br>
+        <button onclick="submitGift()" class="transition ease-in-out delay-100 group relative flex w-1/4 justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">
+          Transfer
+        </button>
+          </dd>
+        </div>
+    
+        <div class="px-4 py-5 sm:p-6">
+          <dt class="text-base font-normal text-white">Information About this</dt><br>
+          <dd class="mt-1">
+          <h3 class="text-fex-300 font-small">U can trasnfer you'r credits to your friends or anyone you like.</h3>
+          <p class="text-sky-400 font-small">If u send your friends 69420 credits</p><br>
+          <h3 class="text-fex-300 font-small">Your friend will get:</h3>
+          <p class="text-sky-400 font-small">69420 Credits</p><br>
+          <h3 class="text-white font-small">Limit is 9999999999999999999999999.</h3>
+          </dd>
+        </div>
+      </dl>
+      <script>
+        async function submitGift() {
+          let id = encodeURIComponent(document.getElementById("InputID").value);
+          let coins = encodeURIComponent(document.getElementById("InputCredits").value);
+          document.location.href = `/giftcoins?id=${id}&coins=${coins}`;
+        };
+      </script>
+    </div>
+          <!-- /End replace -->
+        </div>
+      </main>
+    </div></body></html>

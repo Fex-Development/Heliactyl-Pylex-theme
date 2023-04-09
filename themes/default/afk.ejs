@@ -1,0 +1,111 @@
+<html class="h-full bg-fex-800">
+<%- include('./components/head') %>
+
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-fex-800 h-full">
+<div>
+<%- include('./components/sidebar') %>
+
+
+  <main>
+              <% if (req.query.success) { %>
+              <div class="alert" style="background-color: #00b950; border-radius: 15px;">
+                Success! <%= settings.linkvertise.coins%> coins were added to your account.
+            </div>
+            <% } %>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <!-- Replace with your content -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+
+
+
+
+
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-fex-700 px-4 py-5 border-b border-fex-600 rounded-t sm:px-6">
+  <h3 class="text-lg leading-6 font-medium text-white">AFK</h3>
+  <p class="mt-1 text-sm text-fex-300">Earn free Credits for AFKing.</p>
+</div>
+<div class="bg-fex-700 rounded-b px-4 py-5 sm:px-6 text-fex-300 text-sm">
+                    <p>Every <% if (settings.api.arcio["afk page"].every !== 1) { %><%= settings.api.arcio["afk page"].every %> seconds<% } else { %>second<% } %>, you will get <%= settings.api.arcio["afk page"].coins == 1 ? "a" : settings.api.arcio["afk page"].coins %> coin<%= settings.api.arcio["afk page"].coins == 1 ? "" : "s" %></p>
+                  <script>
+                <%- arcioafktext %>
+            </script>
+                                        <div class="col-md-12 grid-margin stretch-card">
+                </div>
+            </div>
+
+</div>
+<br>
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-fex-700 px-4 py-5 border-b border-fex-600 rounded-t sm:px-6">
+  <h3 class="text-lg leading-6 font-medium text-white">Linkvertise</h3>
+  <p class="mt-1 text-sm text-fex-300">Earn free Credits for completing LV links.</p>
+</div>
+<div class="bg-fex-700 rounded-b px-4 py-5 sm:px-6 text-fex-300 text-sm">
+                    <div class="card-body" style="" id="generate-panel">
+                      <p class="text-fex-300">Every time you complete a Linkvertise link, you will earn <%= settings.linkvertise.coins%> <br><br>
+                        <button class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none" onclick="generate()">Generate Link</button></p>
+                    </div>
+                    <div class="card-body" id="loading-panel" style="display: none;">
+                      <h3 class="text-white">Loading...</h3>
+                    </div>
+                    <div id="error-panel" style="display: none;">
+                      <h3 class="text-white">An error occured! Refresh the page and try again</h3>
+                    </div>
+                    <div id="cooldown-panel" style="display: none;">
+                        <h3 class="text-white">You are on cooldown before you can complete another linkvertise link!</h3>
+                        <p class="text-fex-300">Please wait <span id="cooldown-seconds"></span> seconds before you can complete another link.</p>
+                    </div>
+                    <div id="dailylimit-panel" style="display: none;">
+                        <h3 class="text-white">You have reached the maximum number of links you can complete today!</h3>
+                        <p class="text-fex-300">You can complete more after <span id="daily-timeleft"></span>.</p>
+                    </div>
+                    <script type="text/javascript">
+                      const loadingPanel = document.getElementById('loading-panel')
+                      fetch(`/api/lvcooldown`).then(res => res.json())
+                      .then(json => {
+                        if (json.cooldown === null) {
+                          const genPanel = document.getElementById('generate-panel')
+                          loadingPanel.style.display = 'none'
+                          return genPanel.style.display = ''
+                        } else if (json.dailyLimit) {
+                          const dailyPanel = document.getElementById('dailylimit-panel')
+                          dailyPanel.style.display = ''
+                          loadingPanel.style.display = 'none'
+                          const timeLeft = document.getElementById('daily-timeleft')
+                          timeLeft.innerHTML = json.readable
+                        } else if (json.error) {
+                          const errorPanel = document.getElementById('error-panel')
+                          loadingPanel.style.display = 'none'
+                          errorPanel.style.display = ''
+                        } else {
+                          loadingPanel.style.display = 'none'
+                          const cooldownPanel = document.getElementById('cooldown-panel')
+                          const cooldownTimer = document.getElementById('cooldown-seconds')
+                          setInterval(() => {
+                            const timeLeft = json.cooldown - Date.now()
+                            if (timeLeft < 0) return window.location.replace('/lv')
+                            cooldownTimer.innerHTML = Math.floor(timeLeft / 1000)
+                          }, 1000)
+                          cooldownPanel.style.display = ''
+                        }
+                      })
+                      .catch(() => {
+                        loadingPanel.style.display = 'none'
+                        const errorPanel = document.getElementById('error-panel')
+                        errorPanel.style.display = ''
+                      })
+                    </script>
+                  <script type="text/javascript">
+                    function generate() {
+                      window.location.replace(`/lv/gen`)
+                    }
+                  </script>
+</div>
+      <!-- /End replace -->
+    </div>
+  </main>
+</div></div></body></html>

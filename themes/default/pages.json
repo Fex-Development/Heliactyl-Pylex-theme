@@ -1,0 +1,84 @@
+{
+    "index": "index.ejs",
+    "notfound": "404.ejs",
+    "redirect": {
+        "callback": "/dashboard",
+        "logout": "/",
+        "createserver": "/servers/new?err=CREATED",
+        "deleteserver": "/dashboard",
+        "updateservers": "/dashboard",
+        "failedcreateserver": "/servers/new",
+        "failedmodifyserver": "/dashboard",
+        "setplan": "/admin",
+        "failedsetplan": "/admin",
+        "createserverdisabled": "/servers/new?err=disabled",
+        "modifyserverdisabled": "/servers/new?err=disabled",
+        "deleteserverdisabled": "/delete?err=disabled",
+        "regenpassword": "/account",
+        "setresources": "/admin",
+        "failedsetresources": "/admin",
+        "transferresources": "/gift",
+        "failedtransferresources": "/gift",
+        "renewserver": "/dashboard",	
+        "setcoins": "/admin",	
+        "failedsetcoins": "/admin",	
+        "purchaseram": "/store",	
+        "failedpurchaseram": "/store",	
+        "purchasedisk": "/store",	
+        "failedpurchasedisk": "/store",	
+        "purchasecpu": "/store",	
+        "failedpurchasecpu": "/store",	
+        "purchaseservers": "/store",	
+        "failedpurchaseservers": "/store",
+        "arcioerror": "/earn",
+        "missingorinvalidcouponcode": "/redeem",
+        "successfullyredeemedcoupon": "/redeem",
+        "couponcreationfailed": "/admin",
+        "couponcreationsuccess": "/admin",
+        "couponrevokefailed": "/admin",
+        "couponrevokesuccess": "/admin",
+        "removeaccountfailed": "/admin",
+        "removeaccountsuccess": "/admin"
+    },
+    "pages": {
+        "dashboard": "dashboard.ejs",
+        "servers/new": "create.ejs",
+        "admin": "admin.ejs",
+        "redeem": "redeem.ejs",
+        "account": "account.ejs",
+        "gift": "gift.ejs",
+        "buy": "buy.ejs",
+        "earn": "afk.ejs",
+        "store": "store.ejs",
+        "servers": "servers.ejs"
+    },
+    "mustbeloggedin": [
+        "/dashboard",
+        "/servers/new",
+        "/transfer",
+        "/store",
+        "/coins",
+        "/status",
+        "/earn",
+        "/gift",
+        "/account"
+    ],
+    "mustbeadmin": [
+        "/admin"
+    ],
+    "variables": {
+        "home": {
+            "name": "FexDevelopment",
+            "favicon": "https://media.discordapp.net/attachments/946264593746001960/969858011357151252/FE_1.png?width=418&height=418",
+            "admin": "admin",
+            "buttontext": {
+                "loggedin": {
+                    "link": "/dashboard"
+                },
+                "loggedout": {
+                    "link": "/login"
+                }
+            }
+        }
+    }
+}

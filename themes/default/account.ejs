@@ -1,0 +1,139 @@
+<html class="h-full bg-fex-800">
+<%- include('./components/head') %>
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-fex-800 h-full">
+<div>
+ <%- include('./components/sidebar') %>
+
+  <main>
+                <% if (req.session.newaccount || req.session.password) { %>
+            <div style="background-color: #ffca00; color: #121212; border-radius: 15px" class="alert">
+                <div class="alertbtn"><a class="btn btn-warning btn-clipboard" style="background-color: #ddb100; color: black !important" data-clipboard-action="copy" data-clipboard-target="#clipboardExample2">Copy password</a></div>
+                <% if (req.session.newaccount) { %>
+                    A new account has been created for you on the Pterodactyl Panel.<br>
+                <% } %>
+                <% if (req.session.password) { %>
+                    The password was changed to <span id="clipboardExample2"><%= req.session.password %></span>, If you are unable to login, please ensure that the password is as displayed here.
+                <% } else { %>
+                    Please check your email to set your password.
+                <% } %>
+            </div>
+        <% } %>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <!-- Replace with your content -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="pb-8">
+  <div>
+    <img class="h-32 w-full object-cover lg:h-48 rounded-lg" src="https://media.discordapp.net/attachments/1093925071795531867/1094170684793557042/Rect_Light.png?width=1025&height=285" alt="">
+  </div>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
+      <div class="flex">
+        <img class="h-24 w-24 rounded-full ring-4 ring-fex-800 sm:h-32 sm:w-32" src="https://cdn.discordapp.com/avatars/<%= req.session.userinfo.id%>/<%= req.session.userinfo.avatar%>.jpg?size=1024" alt="">
+      </div>
+      <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
+        <div class="sm:hidden md:block mt-6 min-w-0 flex-1">
+          <h1 class="text-2xl font-bold text-white truncate"><%= req.session.userinfo.username%>!</h1>
+        </div>
+<div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
+          <a href="<%= settings.pterodactyl.domain %>" type="button" class="inline-flex justify-center px-4 py-2 border border-fex-600 shadow-sm text-sm font-medium rounded-md text-fex-300 bg-fex-700 hover:bg-fex-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fex-600">
+            <span>Go to Panel</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hidden sm:block md:hidden mt-6 min-w-0 flex-1">
+      <h1 class="text-2xl font-bold text-white truncate"><%= pterodactyl.username %></h1>
+    </div>
+  </div>
+</div>
+<!-- This example requires Tailwind CSS v2.0+ -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+
+
+
+
+
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-fex-700 px-4 py-5 border-t border-l border-r border-fex2-600 rounded-t sm:px-6 ">
+  <h3 class="text-lg leading-6 font-medium text-white">Panel credentials</h3>
+  <p class="mt-1 text-sm text-fex-300">Credentials for accessing the game panel.</p>
+</div>
+<div class="bg-fex-700 rounded-b px-4 py-5 sm:px-6 border-b border-l border-r border-fex2-600">
+    <dl>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white">Username</dt>
+        <dd class="mt-1 text-sm text-fex-300 sm:col-span-2 sm:mt-0"><%= pterodactyl.username %></dd>
+      </div>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white">Email</dt>
+        <dd class="mt-1 text-sm text-fex-300 sm:col-span-2 sm:mt-0"><%= pterodactyl.email %></dd>
+      </div>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white">Password</dt>
+        <dd id="password" class="mt-1 text-sm text-fex-300 sm:col-span-2 sm:mt-0"><%= req.session.password %></dd>
+      </div>
+    </dl>
+</div>
+<div class="bg-fex-700 px-4 py-5 border-t border-l border-r border-fex2-600 rounded-t sm:px-6 mt-8">
+  <h3 class="text-lg leading-6 font-medium text-white">Security actions</h3>
+  <p class="mt-1 text-sm text-fex-300">This is useful in situations where your account was compromised.</p>
+</div>
+<div class="bg-fex-700 rounded-b px-4 py-5 sm:px-6 border-b border-l border-r border-fex2-600">
+    <dl>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white">Reset password</dt>
+        <dd class="mt-1 text-sm text-fex-300 sm:col-span-2 sm:mt-0">
+          <a href="/regen" class="transition ease-in-out delay-100 group relative flex w-1/3 justify-center rounded-md border border-transparent bg-fex-600 py-2 px-4 text-sm font-medium text-white hover:bg-fex-500 focus:outline-none">
+            Reset
+          </a>
+        </dd>
+      </div>
+            <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white">Refresh Account Data</dt>
+        <dd class="mt-1 text-sm text-fex-300 sm:col-span-2 sm:mt-0">
+          <a href="/updateinfo" class="transition ease-in-out delay-100 group relative flex w-1/3 justify-center rounded-md border border-transparent bg-fex-600 py-2 px-4 text-sm font-medium text-white hover:bg-fex-500 focus:outline-none">
+            Refresh
+          </a>
+        </dd>
+      </div>
+    </dl>
+</div>
+<div class="bg-fex-700 rounded-b px-4 py-5 sm:px-6 border-b border-l border-r border-fex2-600">
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+
+
+
+
+</div>
+       <style>
+.alertbtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+   </style>
+      <!-- /End replace -->
+    </div>
+  </main>
+</div></body></html>

@@ -1,0 +1,205 @@
+<html class="h-full bg-fex-800">
+<%- include('./components/head') %>
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-fex-800 h-full">
+<div>
+ <%- include('./components/sidebar') %>
+
+  <main>
+    <% if (req.query.err) { %>
+        <% if (req.query.err !== "none") { %>
+            <h5 class="text-white op-7 mb-4">
+                <% if (req.query.err == "MISSINGID") { %>
+                    You have not provided the Discord user ID.
+                <% } else if (req.query.err == "INVALIDID" || req.query.err == "MISSINGID") { %>
+                    You have provided a Discord user ID that does not exist, or has not signed up on the dashboard.
+<% } else if (req.query.err == "CREATECOUPONINVALIDCHARACTERS") { %>
+One of the characters you entered in coupon creation was invalid, please try again.
+<% } else if (req.query.err == "REVOKECOUPONCANNOTFINDCODE") { %>
+One of the characters you entered in coupon revoke was invalid, please try again.
+<% } else if (req.query.err == "CREATECOUPONEMPTY") { %>
+While creating your coupon you did not specify to give any resources or coins.
+<% } else if (req.query.err == "CREATECOUPONLESSTHANONE") { %>
+While creating your coupon you tried to give less then one in RAM, DISK, CPU and/or coins.
+                <% } else if (req.query.err == "MISSINGVARIABLES") { %>
+                    You have not provided either ram, disk, cpu, and/or servers.
+                <% } else if (req.query.err == "REMOVEACCOUNTMISSINGID") { %>
+                    You have not specified an id to remove from the panel
+                <% } else if (req.query.err == "MISSINGCOINS") { %>
+                    You have not provided the coin amount.
+                <% } else if (req.query.err == "RAMSIZE" || req.query.err == "DISKSIZE" || req.query.err == "CPUSIZE" || req.query.err == "SERVERSIZE") { %>
+                    The RAM, disk, CPU and servers number cannot be less than 0 nor above 999999999999999.
+                <% } else if (req.query.err == "INVALIDCOINNUMBER") { %>
+                    The coin amount must be a number.
+                <% } else if (req.query.err == "COINSIZE") { %>
+                    The coin amount canno tbe less than 0 and must be above 999999999999999.
+                <% } else if (req.query.err == "NOIP") { %>
+                    There is no IP saved for that user.
+                <% } else if(req.query.err == "NONE" && req.query.ip !== undefined) { %>
+                    IP: <%= req.query.ip %>
+                <% } else { %>
+                    Stop admin abusing.
+                <% } %>
+            </h5>
+        <% } %>
+    <% } %>
+<% if (req.query.code) { %>
+<h5 class="text-white op-7 mb-4">
+You have created a coupon code with the name of: <%= req.query.code %>
+</h5>
+<% } %>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <!-- Replace with your content -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+
+
+
+
+
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-fex-700 rounded-b px-4 py-5 sm:px-6 border-b border-l border-r border-fex2-600">
+    <dl>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+      <dt class="text-sm font-medium text-white">Package</dt>
+      <p>Discord User ID:<input type="text" class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" id="id" placeholder="P-HUB"></p>
+      <p>Package: <select class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" id="package">
+        <option value="">Default Plan (Currently: <%= settings.api.client.packages.default %>)</option>
+        <% for (let [name, value] of Object.entries(settings.api.client.packages.list)) { %>
+            <option value="<%= name %>"><%= name %> (RAM: <%= value.ram %>MB, Disk: <%= value.disk %>MB, CPU: <%= value.cpu %>%, Servers: <%= value.servers %>)</option>
+        <% } %>
+    </select></p>
+    <button onclick="submitForm()" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">
+        Change
+      </button>
+    <script>
+        async function submitForm() {
+            let id = encodeURIComponent(document.getElementById("id").value);
+            let packagename = encodeURIComponent(document.getElementById("package").value);
+            window.location.href = "/setplan?id=" + id + "&package=" + packagename
+        }
+    </script>
+      </div>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white">Change someone's extra resources.</dt>
+        <form action="/setresources">
+            <label for="id">Discord User ID:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="id"><br><br>
+            <label for="ram">RAM:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="ram" type="number"><br><br>
+            <label for="disk">Disk:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="disk" type="number"><br><br>
+            <label for="cpu">CPU:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="cpu" type="number"><br><br>
+            <label for="servers">Servers:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="servers" type="number"><br><br>
+            <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">Change</button>
+        </form>
+      </div>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white" for="InputRAM">Set Coins And Add Coins.</dt>
+        <form action="/setcoins">
+            <label for="id">Discord User ID:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="id"><br><br>
+            <label for="coins">Coins:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="coins" type="number"><br><br>
+            <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">Set</button>
+        </form>
+        <form action="/addcoins">
+            <label for="id">Discord User ID:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="id" placeholder="0000000000000000"><br><br>
+            <label for="coins">Coins:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="coins" type="number"><br><br>
+            <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">Add</button>
+        </form>
+    </div>
+    <% if(settings.api.client.oauth2.ip["duplicate check"] == true) { %>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white" for="InputDisk">Get IP.</dt>
+        <form action="/getip">
+            <label for="id">Discord User ID:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="id"><br><br>
+            <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">Get</button>
+        </form>
+      </div>
+      <% } %>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white" for="InputLoc">Create/Modify/Revoke Coupon</dt>
+        <label for="code">Code:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="code" placeholder="Leave this empty to generate a random code."><br><br>
+        <label for="coins">Coins:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="coins" type="number"><br><br>
+        <label for="ram">RAM:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="ram" type="number"><br><br>
+        <label for="disk">Disk:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="disk" type="number"><br><br>
+        <label for="cpu">CPU:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="cpu" type="number"><br><br>
+        <label for="servers">Servers:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="servers" type="number"><br><br>
+        <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">Create</button>
+    </form>
+    <form action="/revoke_coupon">
+        <label for="code">Code:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="code"><br><br>
+        <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">Revoke</button>
+    </form>
+      </div>
+      <div class="bg-transparent px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-white" for="InputEgg">User Control. Remove and get Information about the user.</dt>
+        <form action="/remove_account">
+            <label for="id">Discord ID:</label>
+            <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="id"><br><br>
+            <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none">Remove</button>
+        </form>
+        <label for="id">Discord ID:</label>
+        <input class="transition ease-in-out delay-100 block w-full flex-1 text-white rounded-md bg-fex-600 border-fex-500 focus:border-sky-400 focus:ring-sky-400 sm:text-sm" name="id" id="userinfoid"><br><br>
+        <button type="submit" class="transition ease-in-out delay-100 group relative flex w-auto justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white hover:bg-sky-500 focus:outline-none" onclick="getUserInfo()">Get</button>
+        <script>
+            async function getUserInfo() {
+                let userinfo = await fetch("/userinfo?id=" + document.getElementById("userinfoid").value);
+                alert(await userinfo.text())
+            }
+        </script>
+      </div>
+    </dl>
+</div>
+<div class="bg-fex-700 rounded-b px-4 py-5 sm:px-6 border-b border-l border-r border-fex2-600">
+<!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+
+
+
+
+</div>
+       <style>
+.alertbtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+   </style>
+      <!-- /End replace -->
+    </div>
+  </main>
+</div></body></html>

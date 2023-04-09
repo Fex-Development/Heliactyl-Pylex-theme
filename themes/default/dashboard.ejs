@@ -1,0 +1,85 @@
+<html class="h-full bg-pylex-800">
+<%- include('./components/head') %>
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-pylex-800 h-full">
+<div>
+<%- include('./components/sidebar') %>
+
+  <main>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <!-- Replace with your content -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<!-- This example requires Tailwind CSS v2.0+ -->
+<%
+let ram = 0;
+let disk = 0;
+let cpu = 0;
+let servers = pterodactyl.relationships.servers.data.length;
+for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) {
+    ram = ram + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.memory == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0);
+    disk = disk + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.disk == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0);
+    cpu = cpu + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.cpu == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0);
+}
+%>
+<% if (req.query.err) { %>
+  <h5 class="text-white op-7 mb-4">
+  <% if (req.query.err == "arcio") { %>
+      The AFK page has hit an error, please wait then try again.
+  </h5>
+<% } %>
+<% } %>
+
+<% if (req.session.newaccount || req.session.password) { %>
+<% if (req.session.newaccount) { %>
+<h5 class="text-white op-7 mb-4">A new account has been created for you on the Pterodactyl Panel.</h5>
+<% } %>
+<% if (req.session.password) { %>
+  <h5 class="text-white op-7 mb-4">Your new password is <strong><%= req.session.password %></strong>! Make sure to keep this password in a safe place.</h5>
+<% } %>
+<% } %>
+<div>
+
+
+          
+
+<br>
+                  
+  <dl class="card-body mt-8 grid grid-cols-1 rounded-lg bg-pylex-700 border border-pylex2-600 mb-8 overflow-hidden shadow divide-y divide-pylex-600 md:grid-cols-3 md:divide-y-0 md:divide-x">
+    <div class="px-4 py-5 sm:p-6">
+      <dt class="text-base font-normal text-pylex-400">RAM (MB)</dt>
+      <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+        <div class="flex items-baseline text-2xl font-semibold text-sky-400">
+          <%= ram %>MB / <%= (packages ? packages.ram : 0) + extraresources.ram%>MB
+        </div></dd>
+    </div>
+
+    <div class="px-4 py-5 sm:p-6">
+      <dt class="text-base font-normal text-pylex-400">CPU Threads (%)</dt>
+      <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+        <div class="flex items-baseline text-2xl font-semibold text-sky-400">
+          <%= cpu %>% / <%= (packages ? packages.cpu : 0) + extraresources.cpu%>%
+        </div>
+      </dd>
+    </div>
+
+    <div class="px-4 py-3 sm:p-6">
+      <dt class="text-base font-normal text-pylex-400">Disk (MB)</dt>
+      <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
+        <div class="flex items-baseline text-2xl font-semibold text-sky-400">
+          <%= disk %>MB / <%= (packages ? packages.disk : 0) + extraresources.disk%>MB
+        </div>
+      </dd>
+    </div>
+  </dl>
+
+      <div class="border-t border-l border-r border-pylex2-600 transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow sm:rounded-tr-lg sm:rounded-tl-lg">
+        <br>
+</div>
+      <div class="border-b border-l border-r border-pylex2-600 transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow rounded-bl-lg rounded-br-lg">
+        <br>
+      </div>
+      <!-- /End replace -->
+    </div>
+  </div></div></main>
+</div>
+</body>
+</html>

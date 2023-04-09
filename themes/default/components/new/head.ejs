@@ -1,0 +1,36 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= settings.name %></title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/nanobar/0.4.2/nanobar.js"></script>
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/boxicons.min.css">
+    <link rel="stylesheet" href="/assets/css/notyf.min.css">
+    <link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="/assets/css/volt.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="<%= settings.icon %>" />
+    <link rel="icon" type="image/png" href="<%= settings.icon %>">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <link href="https://fonts.cdnfonts.com/css/whitney" rel="stylesheet">
+    <% if (settings.api.arcio.enabled == true) { %>
+         <script>Arc looks a little ugly, so it's disabled</script>
+    <% } %>
+</head>
+<body style="font-family: 'Whitney-Semibold', sans-serif;">
+<div class="nanobar my-class" id="my-id" style="position: fixed;">
+    <div class="bar"></div>
+</div>
