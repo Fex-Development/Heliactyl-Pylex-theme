@@ -4,6 +4,9 @@ A heliactyl theme that looks like pylex. It is made cuz someone asked me to make
 # Released.
 The css files are stored in components/head.ejs.
 
+# Coming soon
+The server part is not completed yet edit server and create server are incomplete i will upload it today or tommorow!
+
 ## Installation
 1. Download this github repo
 2. Upload everything to the Heliactyl folder
