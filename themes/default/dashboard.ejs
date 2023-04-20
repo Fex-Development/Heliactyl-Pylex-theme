@@ -74,6 +74,17 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
       <div class="border-t border-l border-r border-fex2-600 transition ease-in-out delay-100 overflow-hidden bg-fex-700 shadow sm:rounded-tr-lg sm:rounded-tl-lg">
         <br>
 </div>
+<% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+      <div onclick="location.href='/servers/edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>'" class="transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow cursor-pointer border-transparent border-dashed border-2 hover:border-pylex-600">
+        <div class="px-4 py-5 sm:px-6">
+          <h3 class="text-lg font-medium leading-6 text-white"><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></h3>
+          <p class="mt-1 mb-4 max-w-2xl text-sm text-pylex-300">
+          
+          </p>
+          <span class="bg-pylex-600 text-pylex-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB RAM</span> <span class="bg-pylex-600 text-pylex-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %> CPU</span> <span class="bg-pylex-600 text-pylex-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB Disk</span>
+        </div>
+      </div>
+ <% } %>
       <div class="border-b border-l border-r border-fex2-600 transition ease-in-out delay-100 overflow-hidden bg-fex-700 shadow rounded-bl-lg rounded-br-lg">
         <br>
       </div>
