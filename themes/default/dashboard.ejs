@@ -1,6 +1,6 @@
-<html class="h-full bg-pylex-800">
+<html class="h-full bg-fex-800">
 <%- include('./components/head') %>
-<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-pylex-800 h-full">
+<body style="font-family: 'Lexend Deca', sans-serif;" class="bg-fex-800 h-full">
 <div>
 <%- include('./components/sidebar') %>
 
@@ -43,9 +43,9 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
 
 <br>
                   
-  <dl class="card-body mt-8 grid grid-cols-1 rounded-lg bg-pylex-700 border border-pylex2-600 mb-8 overflow-hidden shadow divide-y divide-pylex-600 md:grid-cols-3 md:divide-y-0 md:divide-x">
+  <dl class="card-body mt-8 grid grid-cols-1 rounded-lg bg-fex-700 border border-fex2-600 mb-8 overflow-hidden shadow divide-y divide-fex-600 md:grid-cols-3 md:divide-y-0 md:divide-x">
     <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400">RAM (MB)</dt>
+      <dt class="text-base font-normal text-fex-400">RAM (MB)</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
         <div class="flex items-baseline text-2xl font-semibold text-sky-400">
           <%= ram %>MB / <%= (packages ? packages.ram : 0) + extraresources.ram%>MB
@@ -53,7 +53,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
     </div>
 
     <div class="px-4 py-5 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400">CPU Threads (%)</dt>
+      <dt class="text-base font-normal text-fex-400">CPU Threads (%)</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
         <div class="flex items-baseline text-2xl font-semibold text-sky-400">
           <%= cpu %>% / <%= (packages ? packages.cpu : 0) + extraresources.cpu%>%
@@ -62,7 +62,7 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
     </div>
 
     <div class="px-4 py-3 sm:p-6">
-      <dt class="text-base font-normal text-pylex-400">Disk (MB)</dt>
+      <dt class="text-base font-normal text-fex-400">Disk (MB)</dt>
       <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
         <div class="flex items-baseline text-2xl font-semibold text-sky-400">
           <%= disk %>MB / <%= (packages ? packages.disk : 0) + extraresources.disk%>MB
@@ -71,10 +71,21 @@ for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i+
     </div>
   </dl>
 
-      <div class="border-t border-l border-r border-pylex2-600 transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow sm:rounded-tr-lg sm:rounded-tl-lg">
+      <div class="border-t border-l border-r border-fex2-600 transition ease-in-out delay-100 overflow-hidden bg-fex-700 shadow sm:rounded-tr-lg sm:rounded-tl-lg">
         <br>
 </div>
-      <div class="border-b border-l border-r border-pylex2-600 transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow rounded-bl-lg rounded-br-lg">
+<% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+      <div onclick="location.href='/servers/edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>'" class="transition ease-in-out delay-100 overflow-hidden bg-pylex-700 shadow cursor-pointer border-transparent border-dashed border-2 hover:border-pylex-600">
+        <div class="px-4 py-5 sm:px-6">
+          <h3 class="text-lg font-medium leading-6 text-white"><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></h3>
+          <p class="mt-1 mb-4 max-w-2xl text-sm text-pylex-300">
+          
+          </p>
+          <span class="bg-pylex-600 text-pylex-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB RAM</span> <span class="bg-pylex-600 text-pylex-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %> CPU</span> <span class="bg-pylex-600 text-pylex-100 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"><%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB Disk</span>
+        </div>
+      </div>
+ <% } %>
+      <div class="border-b border-l border-r border-fex2-600 transition ease-in-out delay-100 overflow-hidden bg-fex-700 shadow rounded-bl-lg rounded-br-lg">
         <br>
       </div>
       <!-- /End replace -->
